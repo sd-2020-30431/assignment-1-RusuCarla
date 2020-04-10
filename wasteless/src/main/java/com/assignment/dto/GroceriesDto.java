@@ -6,11 +6,20 @@ public class GroceriesDto {
     private String name;
     private int quantity;
     private int calories;
-    private Timestamp purchase_date;
-    private Timestamp expiration_date;
-    private Timestamp consumption_date;
+    private Timestamp purchaseDate;
+    private Timestamp expirationDate;
+    private Timestamp consumptionDate;
 
     public GroceriesDto() {
+    }
+
+    public GroceriesDto(String name, int quantity, int calories, Timestamp purchaseDate, Timestamp expirationDate, Timestamp consumptionDate) {
+        this.name = name;
+        this.quantity = quantity;
+        this.calories = calories;
+        this.purchaseDate = purchaseDate;
+        this.expirationDate = expirationDate;
+        this.consumptionDate = consumptionDate;
     }
 
     public String getName() {
@@ -37,27 +46,27 @@ public class GroceriesDto {
         this.calories = calories;
     }
 
-    public Timestamp getPurchase_date() {
-        return purchase_date;
+    public Timestamp getPurchaseDate() {
+        return purchaseDate;
     }
 
-    public void setPurchase_date(Timestamp purchase_date) {
-        this.purchase_date = purchase_date;
+    public void setPurchaseDate(Timestamp purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
-    public Timestamp getExpiration_date() {
-        return expiration_date;
+    public Timestamp getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setExpiration_date(Timestamp expiration_date) {
-        this.expiration_date = expiration_date;
+    public void setExpirationDate(Timestamp expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
-    public Timestamp getConsumption_date() {
-        return consumption_date;
+    public Timestamp getConsumptionDate() {
+        return consumptionDate;
     }
 
-    public void setConsumption_date(Timestamp consumption_date) {
-        this.consumption_date = consumption_date;
+    public void setConsumptionDate(Timestamp consumptionDate) {
+        this.consumptionDate = consumptionDate;
     }
 }

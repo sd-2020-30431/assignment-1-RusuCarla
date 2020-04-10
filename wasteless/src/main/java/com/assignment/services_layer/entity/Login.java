@@ -48,6 +48,14 @@ public class Login implements Serializable {
         this.id = id;
     }
 
+    public List<Groceries> getGroceryLists() {
+        return groceryLists;
+    }
+
+    public void setGroceryLists(List<Groceries> groceryLists) {
+        this.groceryLists = groceryLists;
+    }
+
     @Override
     public String toString() {
         return "Login{" +

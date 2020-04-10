@@ -29,7 +29,6 @@ public class Groceries implements Serializable {
     @NotNull
     private Timestamp expiration_date;
 
-    @NotNull
     private Timestamp consumption_date;
 
     @ManyToOne

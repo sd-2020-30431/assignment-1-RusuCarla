@@ -45,31 +45,6 @@ public class UserService {
     public void logout(Integer id) {
     }
 
-    @Transactional
-    public int addGroceries(GroceriesDto groceriesDto) {
-        if (groceriesRepository.findByName(groceriesDto.getName()) != null)
-            return -1;
-
-        Groceries groceries =  new Groceries();
-        groceries.setName(groceriesDto.getName());
-        groceries.setQuantity(groceriesDto.getQuantity());
-        groceries.setCalories(groceriesDto.getCalories());
-        groceries.setPurchase_date(groceriesDto.getPurchase_date());
-        groceries.setExpiration_date(groceriesDto.getExpiration_date());
-        groceries.setConsumption_date(groceriesDto.getConsumption_date());
-        groceriesRepository.save(groceries);
-        return 0;
-    }
-
-    @Transactional
-    public int deleteGroceries(String name) {
-        Groceries groceries = groceriesRepository.findByName(name);
-        if (groceries == null)
-            return -1;
-        groceriesRepository.delete(groceries);
-        return 0;
-    }
-
     public LoginDto findById(int id) {
         Login login = loginRepository.findById(id);
         LoginDto loginDto = new LoginDto();
@@ -77,20 +52,4 @@ public class UserService {
         loginDto.setPassword(login.getPassword());
         return loginDto;
     }
-
-    /*@Transactional
-    public void updateCustomer(CustomerDto customerDto) {
-        Customer customer = customerRepository.findCustomerByCnp(customerDto.getCnp());
-        if (customerDto.getName() != null)
-            customer.setName(customerDto.getName());
-        if (customerDto.getCnp() != null)
-            customer.setCnp(customerDto.getCnp());
-        if (customerDto.getAddress() != null)
-            customer.setAddress(customerDto.getAddress());
-        if (customerDto.getEmail() != null)
-            customer.setEmail(customerDto.getEmail());
-        if (customerDto.getPhone() != null)
-            customer.setPhone(customerDto.getPhone());
-    }*/
-
 }

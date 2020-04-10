@@ -16,26 +16,22 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/viewProfile")
-    public ResponseEntity<LoginDto> viewProfile(@RequestHeader("id") Integer id) {
-        LoginDto loginDto = userService.findById(id);
-        return new ResponseEntity<>(loginDto, HttpStatus.OK);
-    }
-
     @PostMapping(value = "/register")
-    public ResponseEntity<String> register(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<StringObj> register(@RequestBody LoginDto loginDto) {
+        System.out.println(loginDto);
         switch (userService.register(loginDto)) {
             case 0:
-                return new ResponseEntity<>("SUCCESS : USER REGISTERED", HttpStatus.OK);
+                return new ResponseEntity<>(new StringObj("SUCCESS : USER REGISTERED"), HttpStatus.OK);
             case -1:
-                return new ResponseEntity<>("ERROR: DUPLICATE USERNAME", HttpStatus.CONFLICT);
+                return new ResponseEntity<>(new StringObj("ERROR: DUPLICATE USERNAME"), HttpStatus.CONFLICT);
             default:
-                return new ResponseEntity<>("ERROR: UNKNOWN", HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new StringObj("ERROR: UNKNOWN"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping(value = "/login")
     public ResponseEntity<Integer> login(@RequestBody LoginDto loginDto) {
+        System.out.println(loginDto);
         Integer id = userService.login(loginDto);
         if (id == null)
             return new ResponseEntity<>(id, HttpStatus.INTERNAL_SERVER_ERROR);
