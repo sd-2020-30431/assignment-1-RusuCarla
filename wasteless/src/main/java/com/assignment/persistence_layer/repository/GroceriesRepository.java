@@ -1,7 +1,7 @@
 package com.assignment.persistence_layer.repository;
 
-import com.assignment.services_layer.entity.Groceries;
-import com.assignment.services_layer.entity.Login;
+import com.assignment.entity.Groceries;
+import com.assignment.entity.Login;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

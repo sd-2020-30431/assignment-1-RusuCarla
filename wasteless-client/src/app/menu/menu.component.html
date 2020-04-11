@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
       integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+
 <div class=indent>
-  <div class="header">
+  <div class="header" style="margin-bottom: 190px">
     <div class="splash">
-      <div style="float: left; margin-left: 30%; margin-right: 10%;">
+      <div style="float: left; margin-left: 10%; margin-right: 10%;">
         <h1 class="splash-head">User: {{username}}</h1>
         <p>Groceries List</p>
         <div *ngIf="sum>loginModel.goal">
-          <p>Wasting food according to goal and burndown rate.</p>
-          <a href="https://www.trusselltrust.org/get-involved/ways-to-give/donate-food/">Donate excess food.</a>
+          <p>Wasting food</p>
+          <a href="https://www.trusselltrust.org/get-involved/ways-to-give/donate-food/">Donate</a>
         </div>
       </div>
 
@@ -28,11 +29,18 @@
         </div>
       </div>
 
+      <div style="float: left;">
+        <div style="margin-left: 200px">
+          <button type="Log out" class="btn-solid-reg" (click)="logout()">Log out</button>
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-  <br><br><br><br>
+  <br>
+  <br>
 
   <div class=indent>
 
@@ -40,14 +48,14 @@
 
       <div class="pure-control-group" style="margin-left: 75px">
         <label for="groceryName">Grocery item</label>
-        <select id="field" id="groceryName" style="margin-left: 65px; width: 180px">
+        <select id="field" id="groceryName" style="margin-left: 65px; width: 160px">
           <option *ngFor="let g of groceries">
             {{g.name}}
           </option>
         </select>
       </div>
 
-      <div class="pure-control-group" style="margin-left: 75px">
+      <div class="pure-control-group" style="margin-left: 75px; margin-top: 10px;">
         <label for="consumptionDate" style="margin-right: 30px;">Consumption Date</label>
         <input [(ngModel)]="consumptionModel.consumptionDate" name="consumptionDate" id="consumptionDate" type="Date"
                                                               placeholder="Consumption Date">
@@ -67,15 +75,19 @@
       </div>
     </div>
 
-    <div style="float: left; margin-top: 15px; margin-left: 200px;">
-      <div class=indentud style="margin-left: 75px">
-        <button type="Log out" class="btn-solid-reg" (click)="logout()">Log out</button>
+    <div  style="float: left; margin-left: 180px;">
+      <div style="margin-bottom: 30px">
+        <button type="View weekly reports" class="btn-solid-reg" (click)="viewWeeklyReports()">View weekly reports</button>
+      </div>
+
+      <div>
+        <button type="View monthly reports" class="btn-solid-reg" (click)="viewMonthlyReports()">View monthly reports</button>
       </div>
     </div>
 
 
-    <div class="splash">
-      <table class="pure-table" style="width: 90%">
+    <div class="splash" class=indent>
+      <table class="pure-table" style="width: 70%">
         <thead>
           <tr>
             <th>Name</th>

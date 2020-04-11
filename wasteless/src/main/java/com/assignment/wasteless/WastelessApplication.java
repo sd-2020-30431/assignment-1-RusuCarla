@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableJpaRepositories(basePackages = "com.assignment.persistence_layer.repository")
-@EntityScan("com.assignment.services_layer.entity")
+@EntityScan("com.assignment.entity")
 @SpringBootApplication(scanBasePackages = "com.assignment")
 public class WastelessApplication {
 

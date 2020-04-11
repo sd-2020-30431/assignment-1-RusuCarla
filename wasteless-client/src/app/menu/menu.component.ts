@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {ConsumptionModel} from './consumption.model';
 import {LoginModel} from '../login/login.model';
-import {SpecialGroceriesModel} from './specialGroceries.model';
+import {StringObjModel} from './stringObj.model';
 
 @Component({
   selector: 'app-menu',
@@ -19,9 +19,8 @@ export class MenuComponent implements OnInit {
   goal: number;
   loginModel: LoginModel = new LoginModel();
   rates: number[];
-  specialGroceries: SpecialGroceriesModel[];
-  specialGrocery: SpecialGroceriesModel;
   sum: number;
+  stringObj: StringObjModel;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -56,6 +55,41 @@ export class MenuComponent implements OnInit {
       },
       error => console.log(error));
     setTimeout(() => {  this.computeSum(); }, 2000);
+  }
+
+  viewWeeklyReports(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        userId: window.localStorage.getItem('userId')
+      })
+    };
+
+    this.http.post<StringObjModel>('http://localhost:8080/users/weeklyReport', this.goal, httpOptions).subscribe(
+      result => {
+        alert(result.msg);
+        console.log(result);
+      },
+      error => {
+        alert('ERROR: Could not generate report.');
+        console.log(error);
+      });
+  }
+  viewMonthlyReports(){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        userId: window.localStorage.getItem('userId')
+      })
+    };
+
+    this.http.post<StringObjModel>('http://localhost:8080/users/monthlyReport', this.goal, httpOptions).subscribe(
+      result => {
+        alert(result.msg);
+        console.log(result);
+      },
+      error => {
+        alert('ERROR: Could not generate report.');
+        console.log(error);
+      });
   }
 
   addConsumptionDate(){
