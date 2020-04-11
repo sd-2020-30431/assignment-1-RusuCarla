@@ -3,8 +3,17 @@ package com.assignment.dto;
 public class LoginDto {
     private String username;
     private String password;
+    private int goal;
 
     public LoginDto() {
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
     }
 
     public String getUsername() {
@@ -28,6 +37,7 @@ public class LoginDto {
         return "LoginDto{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", goal=" + goal +
                 '}';
     }
 }

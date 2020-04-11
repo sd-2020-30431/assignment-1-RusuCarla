@@ -1,4 +1,4 @@
-export class GroceriesModel {
+export class SpecialGroceriesModel {
   name: string;
   quantity: number;
   calories: number;

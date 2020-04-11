@@ -56,7 +56,8 @@ public class GroceriesService {
         ArrayList<GroceriesDto> groceriesDtos = new ArrayList<GroceriesDto>();
         Login login = loginRepository.findById(id);
         for (Groceries g : login.getGroceryLists()) {
-            groceriesDtos.add(new GroceriesDto(g.getName(),g.getQuantity(),g.getCalories(),g.getPurchase_date(),g.getExpiration_date(),g.getConsumption_date()));
+            groceriesDtos.add(new GroceriesDto(g.getName(),g.getQuantity(),g.getCalories(),g.getPurchase_date(),
+                    g.getExpiration_date(),g.getConsumption_date(),g.computeBurndownRate()));
         }
         return groceriesDtos;
     }
@@ -72,4 +73,14 @@ public class GroceriesService {
         groceriesRepository.save(groceries);
         return 0;
     }
+
+    public ArrayList<Integer> getBurndownRates(int id){
+        Login login = loginRepository.findById(id);
+        ArrayList<Integer> rates = new ArrayList<>();
+        for (Groceries g : login.getGroceryLists()) {
+            rates.add(g.computeBurndownRate());
+        }
+        return rates;
+    }
+
 }

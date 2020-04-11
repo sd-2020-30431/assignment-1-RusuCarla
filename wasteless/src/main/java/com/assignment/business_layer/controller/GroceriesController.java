@@ -40,4 +40,10 @@ public class GroceriesController {
         ArrayList<GroceriesDto> groceriesDtos = groceriesService.getGroceries(Integer.parseInt(id));
         return new ResponseEntity<>(groceriesDtos, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/burndownRate")
+    public ResponseEntity<ArrayList<Integer>> burndownRate(@RequestHeader("userId") String id) {
+        ArrayList<Integer> rates = groceriesService.getBurndownRates(Integer.parseInt(id));
+        return new ResponseEntity<>(rates, HttpStatus.OK);
+    }
 }

@@ -43,4 +43,19 @@ public class UserController {
         userService.logout(id);
         return new ResponseEntity<>("SUCCESS: LOGGED OUT", HttpStatus.OK);
     }
+
+    @PostMapping(value = "/setGoal")
+    public ResponseEntity addConsumptionDate(@RequestBody Integer goal, @RequestHeader("userId") String id) {
+        //valid
+
+        userService.setGoal(Integer.parseInt(id), goal);
+        return new ResponseEntity( HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/getGoal")
+    public ResponseEntity<LoginDto> getGoal(@RequestHeader("userId") String id) {
+        //valid
+        LoginDto loginDto= userService.findById(Integer.parseInt(id));
+        return new ResponseEntity(loginDto, HttpStatus.OK);
+    }
 }

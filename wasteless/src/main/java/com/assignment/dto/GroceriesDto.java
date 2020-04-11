@@ -9,17 +9,27 @@ public class GroceriesDto {
     private Timestamp purchaseDate;
     private Timestamp expirationDate;
     private Timestamp consumptionDate;
+    private int rate;
 
     public GroceriesDto() {
     }
 
-    public GroceriesDto(String name, int quantity, int calories, Timestamp purchaseDate, Timestamp expirationDate, Timestamp consumptionDate) {
+    public GroceriesDto(String name, int quantity, int calories, Timestamp purchaseDate, Timestamp expirationDate, Timestamp consumptionDate, int rate) {
         this.name = name;
         this.quantity = quantity;
         this.calories = calories;
         this.purchaseDate = purchaseDate;
         this.expirationDate = expirationDate;
         this.consumptionDate = consumptionDate;
+        this.rate = rate;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     public String getName() {

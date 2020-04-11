@@ -50,6 +50,14 @@ public class UserService {
         LoginDto loginDto = new LoginDto();
         loginDto.setUsername(login.getUsername());
         loginDto.setPassword(login.getPassword());
+        loginDto.setGoal(login.getGoal());
         return loginDto;
+    }
+
+    @Transactional
+    public void setGoal(int id, int goal){
+        Login login = loginRepository.findById(id);
+        login.setGoal(goal);
+        loginRepository.save(login);
     }
 }

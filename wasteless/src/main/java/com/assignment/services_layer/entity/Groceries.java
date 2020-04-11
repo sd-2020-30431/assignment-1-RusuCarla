@@ -99,6 +99,18 @@ public class Groceries implements Serializable {
         this.loginFK = login;
     }
 
+    public int getInterval(){
+        return ((int) ((this.getExpiration_date().getTime() - this.getPurchase_date().getTime())/86400000));
+    }
+
+    public int getTotalCalories(){
+        return this.getQuantity()*this.getCalories();
+    }
+
+    public int computeBurndownRate() {
+        return this.getTotalCalories()/this.getInterval();
+    }
+
     @Override
     public String toString() {
         return "GroceryList{" +

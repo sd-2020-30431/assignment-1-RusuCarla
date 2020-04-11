@@ -20,9 +20,18 @@ public class Login implements Serializable {
     @NotNull
     private String password;
 
+    private int goal;
+
     @OneToMany(mappedBy = "loginFK")
     private List<Groceries> groceryLists;
 
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
+    }
 
     public String getUsername() {
         return username;

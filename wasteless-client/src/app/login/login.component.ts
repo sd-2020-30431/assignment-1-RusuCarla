@@ -12,7 +12,6 @@ import {ok} from 'assert';
 export class LoginComponent implements OnInit {
 
   loginModel: LoginModel = new LoginModel();
-
   constructor(private http: HttpClient, private router: Router) { }
 
   login() {

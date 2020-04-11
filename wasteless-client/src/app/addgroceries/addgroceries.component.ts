@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class AddgroceriesComponent implements OnInit {
   groceriesModel: GroceriesModel = new GroceriesModel();
-
+  username: string;
   constructor(private http: HttpClient, private router: Router) {
   }
 
@@ -36,6 +36,7 @@ export class AddgroceriesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.username = window.localStorage.getItem('username');
   }
 
 }
