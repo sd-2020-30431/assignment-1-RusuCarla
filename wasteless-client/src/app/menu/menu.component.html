@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+<div class=indent>
+  <div class="header">
+    <div class="splash">
+      <h1 class="splash-head">{{username}}</h1>
+      <p>Groceries List</p>
+    </div>
+  </div>
+
+  <div class=indent>
+    <div class="splash">
+      <table class="pure-table" style="width: 90%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Calories</th>
+            <th>Purchase Date</th>
+            <th>Expiration Date</th>
+            <th>Consumption Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let g of groceries">
+            <td>{{ g.name }}</td>
+            <td>{{ g.quantity }}</td>
+            <td>{{g.calories}}</td>
+            <td>{{g.purchaseDate.toString().substr(0, 10)}}</td>
+            <td>{{g.expirationDate.toString().substr(0, 10)}}</td>
+            <td *ngIf="g.consumptionDate!==null">{{g.consumptionDate.toString().substr(0, 10)}}</td>
+            <td *ngIf="g.consumptionDate===null">N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <br>
+    <br>
+
+    <div class = border>
+      <div class=indentud>
+        <select id="field" style="margin-left: 75px">
+          <option *ngFor="let g of groceries">
+            {{g.name}}
+          </option>
+        </select>
+      </div>
+
+      <div class="pure-control-group" style="margin-left: 75px">
+        <label for="consumptionDate">Consumption Date</label>
+        <input [(ngModel)]="consumptionModel.consumptionDate" name="consumptionDate" id="consumptionDate" type="Date" placeholder="Consumption Date">
+      </div>
+
+      <div class=indentud  style="margin-left: 75px">
+        <button type="Add consumption date" class="btn-solid-reg" (click)="addConsumptionDate()">Add consumption date</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

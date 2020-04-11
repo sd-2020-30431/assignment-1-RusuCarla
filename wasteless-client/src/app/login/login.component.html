@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+
+<form class="pure-form pure-form-aligned">
+  <fieldset>
+    <div class="pure-control-group">
+      <label for="user name">Username</label>
+      <input [(ngModel)]="loginModel.username" name="username" id="user name" type="text" placeholder="Username">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="password">Password</label>
+      <input [(ngModel)]="loginModel.password" name="password" id="password" type="password" placeholder="Password">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-controls">
+      <button type="Log in" class="pure-button pure-button-primary" (click)="login()">Login</button>
+      <button type="Register" class="pure-button pure-button-primary"(click)="register()">Register</button>
+    </div>
+
+  </fieldset>
+</form>
