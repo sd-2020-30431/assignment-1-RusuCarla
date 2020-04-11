@@ -28,6 +28,7 @@ export class AddgroceriesComponent implements OnInit {
       },
       error => {
         console.log(error);
+        alert('ERROR: Wrong input.');
       });
   }
 

@@ -22,9 +22,9 @@ html {
 }
 
 .border {
-  border: 1px solid #9791ae;
+  border: 2px solid #9791ae;
   border-radius: 0.25rem;
-  width: 90%;
+  width: 70%;
 }
 
 body, p {
@@ -37,8 +37,8 @@ h1 {
 }
 
 h2 {
-  color: #f1f1f8;
-  font: 700 2.25rem/2.75rem "Montserrat", sans-serif;
+  color: #262431;
+  font: 700 1rem/1.25rem "Montserrat", sans-serif;
 }
 
 h3 {

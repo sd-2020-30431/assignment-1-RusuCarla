@@ -2,6 +2,7 @@ package com.assignment.presentation_layer.controller;
 
 import com.assignment.dto.*;
 import com.assignment.business_layer.services.GroceriesService;
+import com.assignment.utilities.validators.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,8 @@ public class GroceriesController {
 
     @PostMapping(value = "/addGrocery")
     public ResponseEntity<StringObj> addGrocery(@RequestBody GroceriesDto groceriesDto, @RequestHeader("userId") String id) {
-        //valid
+        if (!Validator.validateGroceriesDto(groceriesDto))
+            return new ResponseEntity<>(new StringObj("ERROR: INPUT ERROR"), HttpStatus.INTERNAL_SERVER_ERROR);
 
         groceriesService.addGroceries(groceriesDto, Integer.parseInt(id));
         return new ResponseEntity<>(new StringObj("SUCCESS: ADDED GROCERY"), HttpStatus.OK);
@@ -26,7 +28,8 @@ public class GroceriesController {
 
     @PostMapping(value = "/addConsumptionDate")
     public ResponseEntity addConsumptionDate(@RequestBody ConsumptionDto consumptionDto, @RequestHeader("userId") String id) {
-        //valid
+        if (!Validator.validateConsumptionDto(consumptionDto))
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         groceriesService.addConsumptionDate(consumptionDto, Integer.parseInt(id));
         return new ResponseEntity( HttpStatus.OK);

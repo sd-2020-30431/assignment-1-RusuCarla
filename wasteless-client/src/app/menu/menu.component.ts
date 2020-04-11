@@ -14,13 +14,13 @@ import {StringObjModel} from './stringObj.model';
 export class MenuComponent implements OnInit {
   groceries: GroceriesModel[];
   consumptionModel: ConsumptionModel = new ConsumptionModel();
-  field;
+  field1;
   username: string;
   goal: number;
   loginModel: LoginModel = new LoginModel();
   rates: number[];
   sum: number;
-  stringObj: StringObjModel;
+  stringObj: StringObjModel = new StringObjModel();
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -66,7 +66,7 @@ export class MenuComponent implements OnInit {
 
     this.http.post<StringObjModel>('http://localhost:8080/users/weeklyReport', this.goal, httpOptions).subscribe(
       result => {
-        alert(result.msg);
+        this.stringObj = result;
         console.log(result);
       },
       error => {
@@ -83,7 +83,7 @@ export class MenuComponent implements OnInit {
 
     this.http.post<StringObjModel>('http://localhost:8080/users/monthlyReport', this.goal, httpOptions).subscribe(
       result => {
-        alert(result.msg);
+        this.stringObj = result;
         console.log(result);
       },
       error => {
@@ -99,8 +99,9 @@ export class MenuComponent implements OnInit {
       })
     };
 
-    this.field = (document.getElementById('field')) as HTMLSelectElement;
-    this.consumptionModel.name = this.field.options[this.field.selectedIndex].text.toString();
+    this.field1 = (document.getElementById('field1')) as HTMLSelectElement;
+    console.log(this.field1);
+    this.consumptionModel.name = this.field1.options[this.field1.selectedIndex].text.toString();
     console.log(this.consumptionModel);
     this.http.post('http://localhost:8080/groceries/addConsumptionDate', this.consumptionModel, httpOptions).subscribe(
       result => {
@@ -109,6 +110,7 @@ export class MenuComponent implements OnInit {
       },
       error => {
         console.log(error);
+        alert('ERROR: Wrong input.');
       });
     setTimeout(() => {  this.getGroceries(); }, 2000);
     setTimeout(() => {  this.computeSum(); }, 2000);
@@ -153,6 +155,7 @@ export class MenuComponent implements OnInit {
       },
       error => {
         console.log(error);
+        alert('ERROR: Wrong input.');
       });
     setTimeout(() => {  this.getGoal(); }, 2000);
 

@@ -47,8 +47,8 @@
     <div style="float: left">
 
       <div class="pure-control-group" style="margin-left: 75px">
-        <label for="groceryName">Grocery item</label>
-        <select id="field" id="groceryName" style="margin-left: 65px; width: 160px">
+        <label for="field1">Grocery item</label>
+        <select id="field1" style="margin-left: 65px; width: 160px">
           <option *ngFor="let g of groceries">
             {{g.name}}
           </option>
@@ -75,13 +75,15 @@
       </div>
     </div>
 
-    <div  style="float: left; margin-left: 180px;">
+    <div style="float: left; margin-left: 180px;">
       <div style="margin-bottom: 30px">
-        <button type="View weekly reports" class="btn-solid-reg" (click)="viewWeeklyReports()">View weekly reports</button>
+        <button type="View weekly reports" class="btn-solid-reg" (click)="viewWeeklyReports()">View weekly reports
+        </button>
       </div>
 
       <div>
-        <button type="View monthly reports" class="btn-solid-reg" (click)="viewMonthlyReports()">View monthly reports</button>
+        <button type="View monthly reports" class="btn-solid-reg" (click)="viewMonthlyReports()">View monthly reports
+        </button>
       </div>
     </div>
 
@@ -115,6 +117,13 @@
       </table>
     </div>
 
+    <div class=indent>
+      <h2>
+        <pre class=border *ngIf="stringObj!==null">
+          {{stringObj.msg}}
+        </pre>
+      </h2>
+    </div>
   </div>
 
 </div>

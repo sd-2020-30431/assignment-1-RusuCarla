@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   },
     error => {
     console.log(error);
+    alert('ERROR: Wrong input.');
     });
   }
 
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
-        alert('ERROR.');
+        alert('ERROR: Wrong input.');
       });
   }
   ngOnInit(): void {
